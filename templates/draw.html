@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Draw!{% endblock %}
+
+{% block scripts %}
+    <script src="/static/js/draw.js"></script>
+    <script src="/static/js/blips.js"></script>
+{% endblock %}
+
+{% block content %}
+    <canvas width="400" height="300" data-post-url="{{scribble.get_absolute_url}}">
+    </canvas>
+
+    {% include "toolbar.svg" %}
+
+    {% include "blips.html" %}
+{% endblock %}

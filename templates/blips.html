@@ -1,0 +1,6 @@
+    <aside id="blips">
+        <form action="{{scribble.get_absolute_url}}blips" method="post">
+            <textarea id="blip" name="blip"></textarea>
+        <form>
+        {% include "blipslist.html" %}
+    </aside>

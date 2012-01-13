@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block scripts %}
+    <script src="/static/js/home.js"></script>
+{% endblock %}
+
+{% block content %}
+    <section id="introduction">
+        Doodlr is a social scribbling app. Watch others paint and rate their work!
+            
+        <button id="new-doodle">
+            Start doodling!
+        </button>
+    </section>
+
+    <h2>Currently doodling...</h2>
+    <section id="scribbles">
+        {% for scribble in scribbles %}
+            <article class="scribble">
+                <a href="{{scribble.get_absolute_url}}"><img src="{{scribble.image}}"></a>
+            </article>
+        {% endfor %}
+    </section>
+{% endblock %}

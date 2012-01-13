@@ -1,0 +1,6 @@
+    {% for blip in blips %}
+       <div class="blip" id="blip-{{blip.id}}">
+            <p class="byline">{{blip.user.username}}</p>
+            {{blip.text|linebreaks}}
+        </div>
+    {% endfor %}
