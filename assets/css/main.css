@@ -50,16 +50,27 @@ h1 a {
     color: white;
 }
 
-canvas {
+#canvases {
+    position: relative;
     width: 400px;
     height: 300px;
 }
 
-canvas,
+#canvases canvas {
+    border: solid gray 1px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#canvases,
 #scribble img {
     display: block;
     margin: 3em auto;
+}
 
+canvas#scribble,
+#scribble img {
     border: solid gray 1px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
 }

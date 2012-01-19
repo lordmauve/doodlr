@@ -39,6 +39,7 @@ def scribble(request, id):
         image = request.POST.get('image', None)
         if image:
             scribble.image = image
+            scribble.updated = datetime.datetime.now()
             scribble.save()
             return HttpResponse('OK')
 

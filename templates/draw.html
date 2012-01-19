@@ -8,8 +8,10 @@
 {% endblock %}
 
 {% block content %}
-    <canvas width="400" height="300" data-post-url="{{scribble.get_absolute_url}}">
-    </canvas>
+    <section id="canvases">
+        <canvas id="scribble" width="400" height="300" data-post-url="{{scribble.get_absolute_url}}"></canvas>
+        <canvas id="glass" width="400" height="300"></canvas>
+    </section>
 
     {% include "toolbar.svg" %}
 

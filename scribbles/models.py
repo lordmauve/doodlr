@@ -26,7 +26,7 @@ class Scribble(models.Model):
     user = models.ForeignKey(User)
     image = models.TextField(null=True, default=None)
     created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    updated = models.DateTimeField(default=datetime.datetime.now)
 
     ratings = models.IntegerField(default=0)
     rating_total = models.IntegerField(default=0)
