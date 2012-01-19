@@ -1,20 +1,29 @@
 import re
 import datetime
 import json
-from .models import Scribble, Blip
 
 from django.http import HttpResponse, HttpResponseForbidden
 from django.shortcuts import render, get_object_or_404
 
+from .models import Scribble, Blip
+from .forms import RatingForm
+
 
 class JsonResponse(HttpResponse):
-    def __init__(self, j):
-        super(JsonResponse, self).__init__(json.dumps(j), mimetype='application/json')
+    def __init__(self, j, **kwargs):
+        super(JsonResponse, self).__init__(json.dumps(j), mimetype='application/json', **kwargs)
 
 
 def home(request):
-    scribbles = Scribble.objects.currently_scribbling()
+    currently_scribbling = Scribble.objects.currently_scribbling()
+    latest_scribbles = Scribble.objects.latest_scribbles()
+    highest_rated = Scribble.objects.highest_rated()
     return render(request, 'home.html', locals())
+
+
+def current(request):
+    scribbles = Scribble.objects.currently_scribbling()
+    return render(request, 'scribbles-list.html', locals())
 
 
 def draw(request):
@@ -35,6 +44,25 @@ def scribble(request, id):
 
     blips = scribble.blip_set.all()
     return render(request, 'scribble.html', locals())
+
+
+def rate(request, id):
+    scribble = get_object_or_404(Scribble, id=id)
+
+    if request.method != 'POST':
+        return HttpResponseNotAllowed(['POST'])
+
+    if scribble.user == request.user:
+        return HttpResponseForbidden('You may not rate your own doodles.')
+
+    form = RatingForm(request.POST)
+    if form.is_valid():
+        rating = form.cleaned_data['rating']
+        scribble.rate(rating)
+        scribble.save()
+        return HttpResponse("Thank you for rating!")
+    else:
+        return JsonResponse(dict(form._errors), status=400)
 
 
 def scribble_json(request, id):

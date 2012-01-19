@@ -1,8 +1,9 @@
 body {
     background-color: #ccd;
     font-family: sans-serif;
-    width: 1000px;
-    margin: 10px auto;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10px;
 }
 
 h1 {
@@ -28,6 +29,22 @@ h1 {
     text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.2);
 }
 
+h2 {
+    text-align: center;
+
+    background: #e5e696; /* Old browsers */
+
+    padding: 5px;
+
+    border: solid #564 1px;
+    border-radius: 4px;
+
+    box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.4) inset, 2px 2px 2px rgba(0, 0, 0, 0.2);;
+
+    color: #041;
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.2);
+}
+
 h1 a {
     text-decoration: none;
     color: white;
@@ -47,6 +64,7 @@ canvas,
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
+#rate,
 #blips {
     padding: 10px;
 
@@ -55,9 +73,8 @@ canvas,
 
     box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.4) inset, 2px 2px 2px rgba(0, 0, 0, 0.2);;
 
-    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.2);
-
     background-color: #eeeee8;
+    margin-bottom: 1em;
 }
 
 #blips textarea {
@@ -68,4 +85,32 @@ canvas,
 svg {
     display: block;
     margin: -2em auto 3em;
+}
+
+.scribbles-list {
+    text-align: center;
+    margin: 0 -5px;
+}
+
+div.scribbles-list img {
+    width: 150px;
+    margin: 5px;
+    border: solid gray 1px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+div.rating {
+    display: inline-block;
+    vertical-align: middle; 
+}
+
+.rating img {
+    padding: 0 2px;
+}
+
+.blip .byline {
+    font-weight: bold;
+    background-color: #ccc;
+    padding: 0.2em 0.5em;
 }

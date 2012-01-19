@@ -1,0 +1,6 @@
+    <div class="scribbles-list">
+        {% for scribble in scribbles %}
+            <a href="{{scribble.get_absolute_url}}"><img src="{{scribble.image}}"></a>
+        {% endfor %}
+    </div>
+

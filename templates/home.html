@@ -14,13 +14,31 @@
             Start doodling!
         </button>
     </section>
+    
+    <div id="current_section">
+        <h2>Currently doodling...</h2>
+        <section id="current" class="scribbles">
+            {% with currently_scribbling as scribbles %}
+                {% include "scribbles-list.html" %}
+            {% endwith %}
+        </section>
+    </div>
 
-    <h2>Currently doodling...</h2>
-    <section id="scribbles">
-        {% for scribble in scribbles %}
-            <article class="scribble">
-                <a href="{{scribble.get_absolute_url}}"><img src="{{scribble.image}}"></a>
-            </article>
-        {% endfor %}
+    {% if latest_scribbles %}
+    <h2>Recent scribbles</h2>
+    <section id="recent" class="scribbles">
+        {% with latest_scribbles as scribbles %}
+            {% include "scribbles-list.html" %}
+        {% endwith %}
     </section>
+    {% endif %}
+
+    {% if highest_rated %}
+    <h2>All time greats</h2>
+    <section id="highest_rated" class="scribbles">
+        {% with highest_rated as scribbles %}
+            {% include "scribbles-list.html" %}
+        {% endwith %}
+    </section>
+    {% endif %}
 {% endblock %}

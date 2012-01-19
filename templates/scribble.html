@@ -4,6 +4,7 @@
 
 {% block scripts %}
     <script src="/static/js/scribble.js"></script>
+    <script src="/static/js/rating.js"></script>
     <script src="/static/js/blips.js"></script>
 {% endblock %}
 
@@ -13,6 +14,10 @@
             <img src="{{scribble.image}}">
         </div>
     </section>
+
+    {% if user != scribble.user %}
+        {% include "rate.html" %}
+    {% endif %}
 
     {% include "blips.html" %}
 {% endblock %}
