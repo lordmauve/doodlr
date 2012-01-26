@@ -10,5 +10,5 @@ $(document).ready(function () {
         });
     }
 
-    setInterval(update, 3000);
+    setInterval(update, 500);
 });

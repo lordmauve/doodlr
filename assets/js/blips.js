@@ -2,10 +2,20 @@ $(document).ready(function () {
     var url = $('#blips form').attr('action');
 
     function get_last() {
-        var latest_blip = $('.blip').first();
-        if (!latest_blip.length) return 0;
-        var last_id = latest_blip.attr('id');
-        return parseInt(/\d+$/.exec(last_id)[0], 10);
+        var newest = 0;
+
+        var blips = $('.blip');
+
+        for (var i = 0; i < blips.length; i++) {
+            var blip = $(blips[i]);
+            var id = blip.attr('id');
+            id = parseInt(/\d+$/.exec(id)[0], 10);
+            if (id > newest) {
+                newest = id;
+            }
+        }
+
+        return newest;
     }
 
     function get_url() {
@@ -32,5 +42,5 @@ $(document).ready(function () {
                 $('#blips form').after(data);
             }
         });
-    }, 6000);
+    }, 1000);
 });

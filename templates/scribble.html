@@ -20,4 +20,13 @@
     {% endif %}
 
     {% include "blips.html" %}
+
+    {% with scribble.others_by_this_artist as scribbles %}
+    {% if scribbles %}
+    <h2>Others by this artist</h2>
+    <section id="others" class="scribbles">
+            {% include "scribbles-list.html" %}
+    </section>
+    {% endif %}
+    {% endwith %}
 {% endblock %}

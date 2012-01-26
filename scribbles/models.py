@@ -43,6 +43,9 @@ class Scribble(models.Model):
     def get_absolute_url(self):
         return 'scribble', (self.id,), {}
 
+    def others_by_this_artist(self, num=6):
+        return self.user.scribble_set.filter(image__isnull=False).exclude(id=self.id).order_by('?')[:num]
+
 
 def update_rating(sender, instance, **kwargs):
     """Update a Scribble's rating.

@@ -17,5 +17,5 @@ $(document).ready(function () {
         $('#current_section').hide();
     }
 
-    setInterval(update_current, 10000);
+    setInterval(update_current, 3000);
 });
